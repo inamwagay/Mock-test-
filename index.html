@@ -264,12 +264,24 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
     } else {
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
-      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
+      document.getElementById("finalScore").innerHTML = `
+        ${userName}, you scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.<br>
+        <span class="block mt-2">${getRemarks(score, questions.length)}</span>
+      `;
       saveRecord(userName, score, questions.length);
       if (score / questions.length >= 0.7) {
         playSound('applauseSound');
       }
     }
+  }
+
+  function getRemarks(score, total) {
+    const percentage = (score / total) * 100;
+    if (percentage === 100) return "🌟 Perfect score! You're a quiz master!";
+    if (percentage >= 80) return "👏 Great job! You really know your stuff!";
+    if (percentage >= 60) return "👍 Good effort! A bit more practice and you'll ace it!";
+    if (percentage >= 40) return "🙂 Not bad! Keep learning and improving!";
+    return "📚 Don’t give up! Review the material and try again!";
   }
 
   function saveRecord(name, score, total) {

@@ -44,8 +44,8 @@
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
+      <div class="text-sm text-gray-600 mb-3 font-medium" id="progressText"></div>
       <div class="text-xl font-bold mb-2" id="questionText"></div>
-      <div class="text-sm text-gray-600 mb-3" id="progressText"></div>
       <div id="options" class="grid gap-3"></div>
     </div>
     <div class="flex items-center justify-between">
@@ -125,7 +125,7 @@
     void questionText.offsetWidth;
     void optionsDiv.offsetWidth;
 
-    questionText.textContent = `${index + 1}. ${q.question}`;
+    questionText.textContent = q.question; // removed "1. " prefix
     progressText.textContent = `Question ${index + 1} of ${questions.length}`;
     optionsDiv.innerHTML = "";
 

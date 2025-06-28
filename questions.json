@@ -1,152 +1,88 @@
 [
-  {
-    "question": "Who launched the Non-Cooperation Movement?",
-    "options": {
-      "A": "Jawaharlal Nehru",
-      "B": "Subhas Chandra Bose",
-      "C": "Mahatma Gandhi",
-      "D": "Bal Gangadhar Tilak"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "In which year was the Non-Cooperation Movement launched?",
-    "options": {
-      "A": "1915",
-      "B": "1920",
-      "C": "1930",
-      "D": "1942"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "What was the main objective of the Non-Cooperation Movement?",
-    "options": {
-      "A": "To gain dominion status",
-      "B": "To support British rule",
-      "C": "To resist British rule peacefully",
-      "D": "To promote industrialization"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Which event led to the launch of the Non-Cooperation Movement?",
-    "options": {
-      "A": "Dandi March",
-      "B": "Jallianwala Bagh Massacre",
-      "C": "Simon Commission arrival",
-      "D": "Quit India Resolution"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Which title did Gandhi return during the Non-Cooperation Movement?",
-    "options": {
-      "A": "Rai Bahadur",
-      "B": "Sir",
-      "C": "Kaiser-i-Hind",
-      "D": "Mahatma"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "When did the Civil Disobedience Movement begin?",
-    "options": {
-      "A": "1922",
-      "B": "1930",
-      "C": "1942",
-      "D": "1919"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Which march is associated with the Civil Disobedience Movement?",
-    "options": {
-      "A": "Salt March",
-      "B": "Dandi March",
-      "C": "Both A and B",
-      "D": "None of the above"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Who led the Salt March with Gandhi?",
-    "options": {
-      "A": "Vallabhbhai Patel",
-      "B": "C. Rajagopalachari",
-      "C": "Sarojini Naidu",
-      "D": "All of the above"
-    },
-    "correct": "D"
-  },
-  {
-    "question": "What was the symbolic item involved in the Salt March?",
-    "options": {
-      "A": "Tea",
-      "B": "Cloth",
-      "C": "Salt",
-      "D": "Sugar"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Which British law did the Salt March protest against?",
-    "options": {
-      "A": "Rowlatt Act",
-      "B": "Salt Law",
-      "C": "Government of India Act",
-      "D": "Sedition Law"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Which session of the Congress passed the resolution for Civil Disobedience?",
-    "options": {
-      "A": "Nagpur",
-      "B": "Calcutta",
-      "C": "Lahore",
-      "D": "Karachi"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Which movement called for the boycott of foreign goods and institutions?",
-    "options": {
-      "A": "Swadeshi Movement",
-      "B": "Quit India Movement",
-      "C": "Non-Cooperation Movement",
-      "D": "Revolutionary Movement"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "What was the result of the Chauri Chaura incident?",
-    "options": {
-      "A": "Civil Disobedience was intensified",
-      "B": "Non-Cooperation Movement was withdrawn",
-      "C": "Gandhi was arrested",
-      "D": "Salt March was delayed"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Who coined the term ‘Civil Disobedience’?",
-    "options": {
-      "A": "Henry David Thoreau",
-      "B": "Mahatma Gandhi",
-      "C": "Nelson Mandela",
-      "D": "Jawaharlal Nehru"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "Why was the Civil Disobedience Movement suspended in 1931?",
-    "options": {
-      "A": "Due to British agreement",
-      "B": "Gandhi-Irwin Pact",
-      "C": "Gandhi's illness",
-      "D": "Indian independence achieved"
-    },
-    "correct": "B"
-  }
-]
+  {
+    "question": "Who launched the Non-Cooperation Movement?",
+    "options": {
+      "A": "Jawaharlal Nehru",
+      "B": "Subhas Chandra Bose",
+      "C": "Mahatma Gandhi",
+      "D": "Bal Gangadhar Tilak"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "In which year did the Non-Cooperation Movement begin?",
+    "options": {
+      "A": "1920",
+      "B": "1919",
+      "C": "1930",
+      "D": "1942"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What was the main reason for launching the Non-Cooperation Movement?",
+    "options": {
+      "A": "Jallianwala Bagh Massacre",
+      "B": "Partition of Bengal",
+      "C": "Dandi March",
+      "D": "Simon Commission"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which movement involved the boycott of British goods and institutions?",
+    "options": {
+      "A": "Civil Disobedience Movement",
+      "B": "Non-Cooperation Movement",
+      "C": "Quit India Movement",
+      "D": "Swadeshi Movement"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which incident led to the withdrawal of the Non-Cooperation Movement?",
+    "options": {
+      "A": "Jallianwala Bagh Massacre",
+      "B": "Dandi March",
+      "C": "Chauri Chaura incident",
+      "D": "Simon Commission protests"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "When was the Civil Disobedience Movement launched?",
+    "options": {
+      "A": "1920",
+      "B": "1930",
+      "C": "1942",
+      "D": "1915"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What action started the Civil Disobedience Movement?",
+    "options": {
+      "A": "Boycott of foreign goods",
+      "B": "Burning of clothes",
+      "C": "Dandi March",
+      "D": "Protests against Simon Commission"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "The Dandi March was led by Gandhi to break which British law?",
+    "options": {
+      "A": "Salt Law",
+      "B": "Land Revenue Law",
+      "C": "Education Law",
+      "D": "Trade Law"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "From where did the Dandi March begin?",
+    "options": {
+      "A": "Ahmedabad",
+      "B": "Bombay",
+      "C": "Sabarmati
+      

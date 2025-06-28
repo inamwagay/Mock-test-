@@ -1,132 +1,152 @@
 [
-  {
-    "question": "What was the immediate cause of the Revolt of 1857?",
-    "options": {
-      "A": "Annexation of Oudh",
-      "B": "High taxes",
-      "C": "Introduction of Enfield rifle cartridges",
-      "D": "Doctrine of Lapse"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Who was declared the leader of the revolt in Delhi?",
-    "options": {
-      "A": "Rani Lakshmibai",
-      "B": "Nana Sahib",
-      "C": "Bahadur Shah Zafar",
-      "D": "Tantia Tope"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Who led the revolt in Kanpur?",
-    "options": {
-      "A": "Rani Lakshmibai",
-      "B": "Tantia Tope",
-      "C": "Nana Sahib",
-      "D": "Mangal Pandey"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Which female leader played a prominent role in Jhansi?",
-    "options": {
-      "A": "Begum Hazrat Mahal",
-      "B": "Sarojini Naidu",
-      "C": "Rani Lakshmibai",
-      "D": "Annie Besant"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Where did Mangal Pandey attack a British officer?",
-    "options": {
-      "A": "Delhi",
-      "B": "Barrackpore",
-      "C": "Meerut",
-      "D": "Lucknow"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Who led the revolt in Lucknow?",
-    "options": {
-      "A": "Nana Sahib",
-      "B": "Rani Lakshmibai",
-      "C": "Tantia Tope",
-      "D": "Begum Hazrat Mahal"
-    },
-    "correct": "D"
-  },
-  {
-    "question": "What policy by Lord Dalhousie was resented by Indian rulers?",
-    "options": {
-      "A": "Subsidiary Alliance",
-      "B": "Doctrine of Lapse",
-      "C": "Divide and Rule",
-      "D": "Pitt's India Act"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "The Revolt of 1857 first broke out in which city?",
-    "options": {
-      "A": "Delhi",
-      "B": "Jhansi",
-      "C": "Meerut",
-      "D": "Kanpur"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "What was another name for the Revolt of 1857?",
-    "options": {
-      "A": "First War of Indian Independence",
-      "B": "Quit India Movement",
-      "C": "Civil Disobedience Movement",
-      "D": "Swadeshi Movement"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "Which organization took direct control after the revolt?",
-    "options": {
-      "A": "British East India Company",
-      "B": "Indian National Congress",
-      "C": "British Crown",
-      "D": "Governor-General Council"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "What type of rifle angered Indian soldiers in 1857?",
-    "options": {
-      "A": "Snider Rifle",
-      "B": "Lee-Enfield Rifle",
-      "C": "Enfield Rifle",
-      "D": "Bolt-action Rifle"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "Who called the Revolt of 1857 a ‘Sepoy Mutiny’?",
-    "options": {
-      "A": "Jawaharlal Nehru",
-      "B": "Mahatma Gandhi",
-      "C": "British historians",
-      "D": "Bal Gangadhar Tilak"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "What happened to Bahadur Shah Zafar after the revolt?",
-    "options": {
-      "A": "He became king",
-      "B": "He escaped to France",
-      "C": "He was exiled to Rangoon",
-      "D": "He ruled again from Delhi"
-    },
-    "correct": "C"
-  }
+  {
+    "question": "Who launched the Non-Cooperation Movement?",
+    "options": {
+      "A": "Jawaharlal Nehru",
+      "B": "Subhas Chandra Bose",
+      "C": "Mahatma Gandhi",
+      "D": "Bal Gangadhar Tilak"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "In which year was the Non-Cooperation Movement launched?",
+    "options": {
+      "A": "1915",
+      "B": "1920",
+      "C": "1930",
+      "D": "1942"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What was the main objective of the Non-Cooperation Movement?",
+    "options": {
+      "A": "To gain dominion status",
+      "B": "To support British rule",
+      "C": "To resist British rule peacefully",
+      "D": "To promote industrialization"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which event led to the launch of the Non-Cooperation Movement?",
+    "options": {
+      "A": "Dandi March",
+      "B": "Jallianwala Bagh Massacre",
+      "C": "Simon Commission arrival",
+      "D": "Quit India Resolution"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which title did Gandhi return during the Non-Cooperation Movement?",
+    "options": {
+      "A": "Rai Bahadur",
+      "B": "Sir",
+      "C": "Kaiser-i-Hind",
+      "D": "Mahatma"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "When did the Civil Disobedience Movement begin?",
+    "options": {
+      "A": "1922",
+      "B": "1930",
+      "C": "1942",
+      "D": "1919"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which march is associated with the Civil Disobedience Movement?",
+    "options": {
+      "A": "Salt March",
+      "B": "Dandi March",
+      "C": "Both A and B",
+      "D": "None of the above"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Who led the Salt March with Gandhi?",
+    "options": {
+      "A": "Vallabhbhai Patel",
+      "B": "C. Rajagopalachari",
+      "C": "Sarojini Naidu",
+      "D": "All of the above"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "What was the symbolic item involved in the Salt March?",
+    "options": {
+      "A": "Tea",
+      "B": "Cloth",
+      "C": "Salt",
+      "D": "Sugar"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which British law did the Salt March protest against?",
+    "options": {
+      "A": "Rowlatt Act",
+      "B": "Salt Law",
+      "C": "Government of India Act",
+      "D": "Sedition Law"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which session of the Congress passed the resolution for Civil Disobedience?",
+    "options": {
+      "A": "Nagpur",
+      "B": "Calcutta",
+      "C": "Lahore",
+      "D": "Karachi"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which movement called for the boycott of foreign goods and institutions?",
+    "options": {
+      "A": "Swadeshi Movement",
+      "B": "Quit India Movement",
+      "C": "Non-Cooperation Movement",
+      "D": "Revolutionary Movement"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What was the result of the Chauri Chaura incident?",
+    "options": {
+      "A": "Civil Disobedience was intensified",
+      "B": "Non-Cooperation Movement was withdrawn",
+      "C": "Gandhi was arrested",
+      "D": "Salt March was delayed"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Who coined the term ‘Civil Disobedience’?",
+    "options": {
+      "A": "Henry David Thoreau",
+      "B": "Mahatma Gandhi",
+      "C": "Nelson Mandela",
+      "D": "Jawaharlal Nehru"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Why was the Civil Disobedience Movement suspended in 1931?",
+    "options": {
+      "A": "Due to British agreement",
+      "B": "Gandhi-Irwin Pact",
+      "C": "Gandhi's illness",
+      "D": "Indian independence achieved"
+    },
+    "correct": "B"
+  }
 ]

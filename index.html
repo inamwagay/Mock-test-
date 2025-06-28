@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function() {
-      emailjs.init("W8-8XhjP3qR4kocGt");
+      emailjs.init("W8-8XhjP3qR4kocGt"); // Your EmailJS public key
     })();
   </script>
   <style>
@@ -16,24 +16,18 @@
     .hidden { display: none; }
     .correct { border: 2px solid #16a34a; background-color: #dcfce7; }
     .wrong { border: 2px solid #dc2626; background-color: #fee2e2; }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
     .slide-in {
-      animation: slideIn 0.6s ease-out;
+      animation: slideIn 0.5s ease-in-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
   </style>
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
 
+<!-- Home Section -->
 <div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
   <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
   <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
@@ -42,6 +36,7 @@
   </div>
 </div>
 
+<!-- Quiz Section -->
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
@@ -53,6 +48,8 @@
       <button onclick="nextQuestion()" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium">Next</button>
     </div>
   </div>
+
+  <!-- Result -->
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
     <p id="finalScore" class="text-lg"></p>
@@ -62,6 +59,7 @@
 </div>
 
 <script>
+  // Inline question data
   const questions = [
     {
       question: "What does HTML stand for?",
@@ -84,14 +82,14 @@
       correct: "A"
     },
     {
-      question: "Inside which HTML element do we put the JavaScript?",
+      question: "What does CSS stand for?",
       options: {
-        A: "<script>",
-        B: "<javascript>",
-        C: "<js>",
-        D: "<scripting>"
+        A: "Computer Style Sheets",
+        B: "Creative Style Sheets",
+        C: "Cascading Style Sheets",
+        D: "Colorful Style Sheets"
       },
-      correct: "A"
+      correct: "C"
     }
   ];
 
@@ -123,13 +121,9 @@
     }
     userName = nameInput.value.trim();
 
-    if (!questions.length) {
-      alert("No questions found.");
-      return;
-    }
-
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("quizSection").classList.remove("hidden");
+
     score = 0;
     currentQuestion = 0;
     loadQuestion(currentQuestion);
@@ -140,9 +134,10 @@
     const questionText = document.getElementById("questionText");
     const optionsDiv = document.getElementById("options");
 
+    // Reset animation
     questionText.classList.remove("slide-in");
     optionsDiv.classList.remove("slide-in");
-    void questionText.offsetWidth; // force reflow
+    void questionText.offsetWidth;
     void optionsDiv.offsetWidth;
 
     questionText.textContent = `${index + 1}. ${q.question}`;
@@ -206,7 +201,7 @@
     };
 
     const statusEl = document.getElementById("emailStatus");
-    statusEl.textContent = "Saving results ";
+    statusEl.textContent = "Saving results...";
 
     emailjs.send("service_iihpauj", "template_261p4gc", templateParams)
       .then(function(response) {
@@ -227,5 +222,6 @@
     document.getElementById("homeSection").classList.remove("hidden");
   }
 </script>
+
 </body>
 </html>

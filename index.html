@@ -14,35 +14,12 @@
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
 
-<!-- Audio Elements -->
-<audio id="correctSound" src="/mnt/data/correct-6033.mp3"></audio>
-<audio id="wrongSound" src="/mnt/data/wronganswer-37702.mp3"></audio>
-<audio id="applauseSound" src="/mnt/data/applause-alks-ses-efekti-125030.mp3"></audio>
-<audio id="kbcSound" src="https://ia800209.us.archive.org/14/items/KbcIntroTune/kbc-intro-tune.mp3"></audio>
-
-<!-- Home Page -->
 <div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
   <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
   <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
-  <div class="flex justify-center gap-6 mb-6">
-    <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Take Quiz</button>
-    <button onclick="document.getElementById('passwordSection').classList.remove('hidden')" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold">Admin</button>
-  </div>
-  <div id="passwordSection" class="hidden">
-    <input type="password" id="adminPassword" placeholder="Enter Admin Password" class="p-2 border rounded w-full mb-3">
-    <button onclick="verifyPassword()" class="bg-indigo-600 text-white px-4 py-2 rounded">Enter Admin Mode</button>
-    <p id="passwordMessage" class="text-sm text-red-600 mt-2"></p>
-  </div>
+  <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Start Quiz</button>
 </div>
 
-<!-- Admin Section (Only Records) -->
-<div id="adminSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
-  <h2 class="text-2xl font-bold mb-4 text-purple-700">📋 User Records</h2>
-  <ul id="recordList" class="text-left text-sm space-y-1 mb-6"></ul>
-  <button onclick="goToHome()" class="bg-gray-500 hover:bg-gray-700 text-white px-6 py-2 rounded-full">Back</button>
-</div>
-
-<!-- Quiz Section -->
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
@@ -56,13 +33,12 @@
   </div>
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
-    <p id="finalScore" class="text-lg"></p>
-    <p id="remark" class="text-base mt-2 text-gray-700 font-semibold"></p>
+    <p id="finalScore" class="text-lg mb-2"></p>
+    <p id="remarks" class="text-md font-medium text-purple-700"></p>
     <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
   </div>
 </div>
 
-<!-- Script -->
 <script>
   let questions = [];
   let currentQuestion = 0;
@@ -70,72 +46,30 @@
   let timer;
   let timeLeft = 30;
   let userName = "";
-  const ADMIN_PASSWORD = "admin123";
-
-  function playSound(id, volume = 0.3, maxDuration = null) {
-    const audio = document.getElementById(id);
-    if (audio) {
-      audio.volume = volume;
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-      if (maxDuration) {
-        setTimeout(() => {
-          audio.pause();
-          audio.currentTime = 0;
-        }, maxDuration * 1000);
-      }
-    }
-  }
 
   async function loadQuestions() {
     try {
-      const res = await fetch("questions.json");
-      questions = await res.json();
-    } catch (e) {
-      alert("Failed to load questions.");
-      console.error(e);
-    }
-  }
-
-  function loadRecords() {
-    const list = document.getElementById("recordList");
-    if (!list) return;
-    list.innerHTML = "";
-    const records = JSON.parse(localStorage.getItem("quizRecords") || "[]");
-    records.forEach(record => {
-      const li = document.createElement("li");
-      li.textContent = `${record.name} - ${record.score}/${record.total} - ${record.time}`;
-      list.appendChild(li);
-    });
-  }
-
-  function verifyPassword() {
-    const input = document.getElementById("adminPassword").value;
-    const msg = document.getElementById("passwordMessage");
-    if (input === ADMIN_PASSWORD) {
-      document.getElementById("homeSection").classList.add("hidden");
-      document.getElementById("adminSection").classList.remove("hidden");
-      msg.textContent = "";
-      loadRecords();
-    } else {
-      msg.textContent = "Incorrect password.";
+      const response = await fetch("questions.json");
+      questions = await response.json();
+    } catch (error) {
+      alert("Could not load questions. Make sure questions.json is in the same folder.");
     }
   }
 
   async function startQuiz() {
-    const nameInput = document.getElementById("userNameInput");
-    if (!nameInput.value.trim()) {
+    const input = document.getElementById("userNameInput").value.trim();
+    if (!input) {
       alert("Please enter your name.");
       return;
     }
-    userName = nameInput.value.trim();
+    userName = input;
     await loadQuestions();
+
     if (questions.length === 0) {
-      alert("No questions available.");
+      alert("No questions found.");
       return;
     }
 
-    playSound('kbcSound', 0.5, 6);
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("quizSection").classList.remove("hidden");
     score = 0;
@@ -179,11 +113,9 @@
     const selected = input.value;
     if (selected === correct) {
       input.parentElement.classList.add("correct");
-      playSound('correctSound');
       score++;
     } else {
       input.parentElement.classList.add("wrong");
-      playSound('wrongSound');
       const correctInput = Array.from(document.querySelectorAll('input[name="answer"]')).find(i => i.value === correct);
       if (correctInput) correctInput.parentElement.classList.add("correct");
     }
@@ -198,35 +130,20 @@
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
       document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
-
-      // Add remarks
-      let remark = "";
-      const percentage = score / questions.length;
-      if (percentage === 1) remark = "🌟 Perfect Score! Outstanding!";
-      else if (percentage >= 0.8) remark = "🎉 Excellent work!";
-      else if (percentage >= 0.6) remark = "👏 Good job!";
-      else if (percentage >= 0.4) remark = "🙂 Keep practicing!";
-      else remark = "😕 Try again. You can do better!";
-
-      document.getElementById("remark").textContent = remark;
-
-      saveRecord(userName, score, questions.length);
-      if (score / questions.length >= 0.7) {
-        playSound('applauseSound');
-      }
+      document.getElementById("remarks").textContent = getRemarks(score, questions.length);
     }
   }
 
-  function saveRecord(name, score, total) {
-    const dateTime = new Date().toLocaleString();
-    const records = JSON.parse(localStorage.getItem("quizRecords") || "[]");
-    records.push({ name, score, total, time: dateTime });
-    localStorage.setItem("quizRecords", JSON.stringify(records));
+  function getRemarks(score, total) {
+    const percentage = (score / total) * 100;
+    if (percentage === 100) return "🏆 Excellent! Perfect score!";
+    if (percentage >= 80) return "🎉 Great job!";
+    if (percentage >= 50) return "🙂 Good effort!";
+    return "📚 Keep practicing!";
   }
 
   function goToHome() {
     document.getElementById("quizSection").classList.add("hidden");
-    document.getElementById("adminSection").classList.add("hidden");
     document.getElementById("resultBox").classList.add("hidden");
     document.getElementById("quizBox").classList.remove("hidden");
     document.getElementById("homeSection").classList.remove("hidden");

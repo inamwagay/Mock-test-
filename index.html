@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MCQ Quiz App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    .hidden { display: none; }
+    .correct { border: 2px solid #16a34a; background-color: #dcfce7; }
+    .wrong { border: 2px solid #dc2626; background-color: #fee2e2; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
+
+<!-- Audio Elements -->
+<audio id="correctSound" src="/mnt/data/correct-6033.mp3"></audio>
+<audio id="wrongSound" src="/mnt/data/wronganswer-37702.mp3"></audio>
+<audio id="applauseSound" src="/mnt/data/applause-alks-ses-efekti-125030.mp3"></audio>
+<audio id="kbcSound" src="https://ia800209.us.archive.org/14/items/KbcIntroTune/kbc-intro-tune.mp3"></audio>
+
+<!-- Home Page -->
+<div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
+  <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
+  <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
+  <div class="flex justify-center gap-6 mb-6">
+    <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Take Quiz</button>
+    <button onclick="document.getElementById('passwordSection').classList.remove('hidden')" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold">Admin</button>
+  </div>
+  <div id="passwordSection" class="hidden">
+    <input type="password" id="adminPassword" placeholder="Enter Admin Password" class="p-2 border rounded w-full mb-3">
+    <button onclick="verifyPassword()" class="bg-indigo-600 text-white px-4 py-2 rounded">Enter Admin Mode</button>
+    <p id="passwordMessage" class="text-sm text-red-600 mt-2"></p>
+  </div>
+</div>
+
+<!-- Admin Section -->
+<div id="adminSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
+  <h2 class="text-2xl font-bold mb-4 text-purple-700">Add Questions (Bulk Format)</h2>
+  <textarea id="bulkQuestionInput" class="w-full h-48 p-2 border rounded mb-4" placeholder="Example:
+What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
+  <button onclick="addBulkQuestions()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full">Add Questions</button>
+  <button onclick="goToHome()" class="bg-gray-500 hover:bg-gray-700 text-white px-6 py-2 rounded-full mt-3 ml-3">Back</button>
+  <p id="adminMsg" class="mt-2 text-green-600"></p>
+
+  <h3 class="text-xl font-bold mt-6 mb-2">All Questions</h3>
+  <ul id="questionList" class="text-left text-sm space-y-2 mb-6"></ul>
+
+  <h3 class="text-xl font-bold mt-6 mb-2">User Records</h3>
+  <ul id="recordList" class="text-left text-sm space-y-1"></ul>
+</div>
+
+<!-- Quiz Section -->
+<div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
+  <div id="quizBox">
+    <div class="mb-6">
+      <div class="text-xl font-bold mb-2" id="questionText"></div>
+      <div id="options" class="grid gap-3"></div>
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-red-600">⏱️ Time Left: <span id="timer">30</span>s</span>
+      <button onclick="nextQuestion()" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium">Next</button>
+    </div>
+  </div>
+  <div id="resultBox" class="hidden text-center">
+    <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
+    <p id="finalScore" class="text-lg"></p>
+    <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  let questions = [];
+  let currentQuestion = 0;
+  let score = 0;
+  let timer;
+  let timeLeft = 30;
+  let userName = "";
+  const ADMIN_PASSWORD = "admin123";
+
+  function playSound(id, volume = 0.3, maxDuration = null) {
+    const audio = document.getElementById(id);
+    if (audio) {
+      audio.volume = volume;
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+      if (maxDuration) {
+        setTimeout(() => {
+          audio.pause();
+          audio.currentTime = 0;
+        }, maxDuration * 1000);
+      }
+    }
+  }
+
+  function loadQuestions() {
+    const saved = localStorage.getItem("quizQuestions");
+    questions = saved ? JSON.parse(saved) : [];
+  }
+
+  function loadRecords() {
+    const list = document.getElementById("recordList");
+    if (!list) return;
+    list.innerHTML = "";
+    const records = JSON.parse(localStorage.getItem("quizRecords") || "[]");
+    records.forEach(record => {
+      const li = document.createElement("li");
+      li.textContent = `${record.name} - ${record.score}/${record.total} - ${record.time}`;
+      list.appendChild(li);
+    });
+  }
+
+  function verifyPassword() {
+    const input = document.getElementById("adminPassword").value;
+    const msg = document.getElementById("passwordMessage");
+    if (input === ADMIN_PASSWORD) {
+      document.getElementById("homeSection").classList.add("hidden");
+      document.getElementById("adminSection").classList.remove("hidden");
+      msg.textContent = "";
+      showAllQuestions();
+      loadRecords();
+    } else {
+      msg.textContent = "Incorrect password.";
+    }
+  }
+
+  function addBulkQuestions() {
+    const rawInput = document.getElementById("bulkQuestionInput").value.trim();
+    if (!rawInput) {
+      document.getElementById("adminMsg").textContent = "No input provided.";
+      return;
+    }
+
+    const lines = rawInput.split("\n").map(line => line.trim()).filter(line => line);
+    let added = 0;
+    loadQuestions();
+
+    lines.forEach(line => {
+      const parts = line.split("|");
+      if (parts.length === 6) {
+        const [q, A, B, C, D, correct] = parts;
+        questions.push({
+          question: q.trim(),
+          options: {
+            A: A.slice(2).trim(),
+            B: B.slice(2).trim(),
+            C: C.slice(2).trim(),
+            D: D.slice(2).trim()
+          },
+          correct: correct.trim().toUpperCase()
+        });
+        added++;
+      }
+    });
+
+    localStorage.setItem("quizQuestions", JSON.stringify(questions));
+    document.getElementById("adminMsg").textContent = `${added} question(s) added!`;
+    document.getElementById("bulkQuestionInput").value = '';
+    showAllQuestions();
+  }
+
+  function showAllQuestions() {
+    loadQuestions();
+    const list = document.getElementById("questionList");
+    list.innerHTML = "";
+    questions.forEach((q, index) => {
+      const li = document.createElement("li");
+      li.className = "bg-gray-100 p-2 rounded flex justify-between items-start gap-2";
+      li.innerHTML = `
+        <div>
+          <strong>Q${index + 1}:</strong> ${q.question}<br/>
+          <em>A:</em> ${q.options.A}, <em>B:</em> ${q.options.B}, <em>C:</em> ${q.options.C}, <em>D:</em> ${q.options.D}, <em>Ans:</em> ${q.correct}
+        </div>
+        <button onclick="removeQuestion(${index})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">Remove</button>
+      `;
+      list.appendChild(li);
+    });
+  }
+
+  function removeQuestion(index) {
+    loadQuestions();
+    if (confirm("Delete this question?")) {
+      questions.splice(index, 1);
+      localStorage.setItem("quizQuestions", JSON.stringify(questions));
+      showAllQuestions();
+      document.getElementById("adminMsg").textContent = "Question removed.";
+    }
+  }
+
+  function startQuiz() {
+    const nameInput = document.getElementById("userNameInput");
+    if (!nameInput.value.trim()) {
+      alert("Please enter your name.");
+      return;
+    }
+    userName = nameInput.value.trim();
+    loadQuestions();
+    if (questions.length === 0) {
+      alert("No questions available.");
+      return;
+    }
+
+    playSound('kbcSound', 0.5, 6);
+    document.getElementById("homeSection").classList.add("hidden");
+    document.getElementById("quizSection").classList.remove("hidden");
+    score = 0;
+    currentQuestion = 0;
+    loadQuestion(currentQuestion);
+  }
+
+  function loadQuestion(index) {
+    const q = questions[index];
+    document.getElementById("questionText").textContent = `${index + 1}. ${q.question}`;
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = '';
+
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement("label");
+      label.className = "flex items-center gap-2 bg-indigo-100 p-3 rounded cursor-pointer";
+      label.innerHTML = `<input type="radio" name="answer" value="${key}" onchange="checkAnswer(this, '${q.correct}')"> ${key}. ${val}`;
+      optionsDiv.appendChild(label);
+    });
+
+    startTimer();
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = timeLeft;
+    timer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer").textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function checkAnswer(input, correct) {
+    const allLabels = document.querySelectorAll('#options label');
+    allLabels.forEach(l => l.classList.remove('correct', 'wrong'));
+    const selected = input.value;
+    if (selected === correct) {
+      input.parentElement.classList.add("correct");
+      playSound('correctSound');
+      score++;
+    } else {
+      input.parentElement.classList.add("wrong");
+      playSound('wrongSound');
+      const correctInput = Array.from(document.querySelectorAll('input[name="answer"]')).find(i => i.value === correct);
+      if (correctInput) correctInput.parentElement.classList.add("correct");
+    }
+  }
+
+  function nextQuestion() {
+    clearInterval(timer);
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      loadQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizBox").classList.add("hidden");
+      document.getElementById("resultBox").classList.remove("hidden");
+      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
+      saveRecord(userName, score, questions.length);
+      if (score / questions.length >= 0.7) {
+        playSound('applauseSound');
+      }
+    }
+  }
+
+  function saveRecord(name, score, total) {
+    const dateTime = new Date().toLocaleString();
+    const records = JSON.parse(localStorage.getItem("quizRecords") || "[]");
+    records.push({ name, score, total, time: dateTime });
+    localStorage.setItem("quizRecords", JSON.stringify(records));
+  }
+
+  function goToHome() {
+    document.getElementById("quizSection").classList.add("hidden");
+    document.getElementById("adminSection").classList.add("hidden");
+    document.getElementById("resultBox").classList.add("hidden");
+    document.getElementById("quizBox").classList.remove("hidden");
+    document.getElementById("homeSection").classList.remove("hidden");
+  }
+
+  loadQuestions();
+</script>
+</body>
+</html>

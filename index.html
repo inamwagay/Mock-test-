@@ -29,17 +29,6 @@
         opacity: 1;
       }
     }
-    .progress {
-      font-weight: 600;
-      color: #4f46e5;
-      margin-bottom: 0.75rem;
-    }
-    .remarks {
-      margin-top: 1rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #2563eb;
-    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
@@ -54,7 +43,9 @@
 
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
-    <div class="progress" id="questionProgress"></div>
+    <!-- Added progress text here -->
+    <div id="progressText" class="mb-4 font-semibold text-gray-700"></div>
+
     <div class="mb-6">
       <div class="text-xl font-bold mb-2" id="questionText"></div>
       <div id="options" class="grid gap-3"></div>
@@ -67,7 +58,6 @@
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
     <p id="finalScore" class="text-lg"></p>
-    <p id="remarks" class="remarks"></p>
     <p id="emailStatus" class="mt-3 text-sm text-gray-700"></p>
     <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
   </div>
@@ -129,10 +119,10 @@
     const q = questions[index];
     const questionText = document.getElementById("questionText");
     const optionsDiv = document.getElementById("options");
-    const progress = document.getElementById("questionProgress");
+    const progressText = document.getElementById("progressText");
 
-    // Show question progress e.g. "Question 1 of 10"
-    progress.textContent = `Question ${index + 1} of ${questions.length}`;
+    // Update progress text
+    progressText.textContent = `Question ${index + 1} of ${questions.length}`;
 
     // Trigger animation
     questionText.classList.remove("slide-in");
@@ -140,6 +130,7 @@
     void questionText.offsetWidth; // force reflow
     void optionsDiv.offsetWidth;
 
+    // Show question without Q.1. prefix
     questionText.textContent = q.question;
     optionsDiv.innerHTML = "";
 
@@ -179,18 +170,21 @@
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
       document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
-      document.getElementById("remarks").textContent = getRemarks(score, questions.length);
+
+      // Add remarks based on score
+      let remarks = "";
+      const percent = (score / questions.length) * 100;
+      if (percent === 100) remarks = "🌟 Perfect score! Outstanding!";
+      else if (percent >= 80) remarks = "👍 Great job! You did well.";
+      else if (percent >= 50) remarks = "🙂 Good effort! Keep practicing.";
+      else remarks = "😕 Don't worry, try again to improve.";
+
+      const finalScoreEl = document.getElementById("finalScore");
+      finalScoreEl.innerHTML += `<br><em>${remarks}</em>`;
+
       saveRecord(userName, score, questions.length);
       sendEmail(userName, score, questions.length);
     }
-  }
-
-  function getRemarks(score, total) {
-    const percentage = (score / total) * 100;
-    if (percentage === 100) return "Outstanding! You aced it! 🎉";
-    if (percentage >= 80) return "Great job! Keep it up! 👍";
-    if (percentage >= 50) return "Good effort! You can do even better! 🙂";
-    return "Keep practicing! You'll get there! 💪";
   }
 
   function saveRecord(name, score, total) {
@@ -218,7 +212,6 @@
         statusEl.classList.remove("text-red-600");
         statusEl.classList.add("text-green-600");
       }, function(error) {
-        console.error("EmailJS error response:", error);
         statusEl.textContent = "❌ Failed to send quiz result email.";
         statusEl.classList.remove("text-green-600");
         statusEl.classList.add("text-red-600");

@@ -1,32 +1,142 @@
 [
   {
-    "question": "What is the capital of France?",
+    "question": "What was the immediate cause of the Revolt of 1857?",
     "options": {
-      "A": "Paris",
-      "B": "Madrid",
-      "C": "Berlin",
-      "D": "Rome"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "Which planet is known as the Red Planet?",
-    "options": {
-      "A": "Earth",
-      "B": "Saturn",
-      "C": "Mars",
-      "D": "Jupiter"
+      "A": "Annexation of Oudh",
+      "B": "High taxes",
+      "C": "Introduction of Enfield rifle cartridges",
+      "D": "Doctrine of Lapse"
     },
     "correct": "C"
   },
   {
-    "question": "What is 2 + 2?",
+    "question": "Who was declared the leader of the revolt in Delhi?",
     "options": {
-      "A": "3",
-      "B": "4",
-      "C": "5",
-      "D": "6"
+      "A": "Rani Lakshmibai",
+      "B": "Nana Sahib",
+      "C": "Bahadur Shah Zafar",
+      "D": "Tantia Tope"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Who led the revolt in Kanpur?",
+    "options": {
+      "A": "Rani Lakshmibai",
+      "B": "Tantia Tope",
+      "C": "Nana Sahib",
+      "D": "Mangal Pandey"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which female leader played a prominent role in Jhansi?",
+    "options": {
+      "A": "Begum Hazrat Mahal",
+      "B": "Sarojini Naidu",
+      "C": "Rani Lakshmibai",
+      "D": "Annie Besant"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Where did Mangal Pandey attack a British officer?",
+    "options": {
+      "A": "Delhi",
+      "B": "Barrackpore",
+      "C": "Meerut",
+      "D": "Lucknow"
     },
     "correct": "B"
+  },
+  {
+    "question": "Who led the revolt in Lucknow?",
+    "options": {
+      "A": "Nana Sahib",
+      "B": "Rani Lakshmibai",
+      "C": "Tantia Tope",
+      "D": "Begum Hazrat Mahal"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "What policy by Lord Dalhousie was resented by Indian rulers?",
+    "options": {
+      "A": "Subsidiary Alliance",
+      "B": "Doctrine of Lapse",
+      "C": "Divide and Rule",
+      "D": "Pitt's India Act"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "The Revolt of 1857 first broke out in which city?",
+    "options": {
+      "A": "Delhi",
+      "B": "Jhansi",
+      "C": "Meerut",
+      "D": "Kanpur"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What was another name for the Revolt of 1857?",
+    "options": {
+      "A": "First War of Indian Independence",
+      "B": "Quit India Movement",
+      "C": "Civil Disobedience Movement",
+      "D": "Swadeshi Movement"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Who was Mangal Pandey?",
+    "options": {
+      "A": "A poet",
+      "B": "A farmer",
+      "C": "A British officer",
+      "D": "A soldier who sparked the revolt"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Which organization took direct control after the revolt?",
+    "options": {
+      "A": "British East India Company",
+      "B": "Indian National Congress",
+      "C": "British Crown",
+      "D": "Governor-General Council"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What type of rifle angered Indian soldiers in 1857?",
+    "options": {
+      "A": "Snider Rifle",
+      "B": "Lee-Enfield Rifle",
+      "C": "Enfield Rifle",
+      "D": "Bolt-action Rifle"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Who called the Revolt of 1857 a ‘Sepoy Mutiny’?",
+    "options": {
+      "A": "Jawaharlal Nehru",
+      "B": "Mahatma Gandhi",
+      "C": "British historians",
+      "D": "Bal Gangadhar Tilak"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What happened to Bahadur Shah Zafar after the revolt?",
+    "options": {
+      "A": "He became king",
+      "B": "He escaped to France",
+      "C": "He was exiled to Rangoon",
+      "D": "He ruled again from Delhi"
+    },
+    "correct": "C"
   }
 ]

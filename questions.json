@@ -78,5 +78,75 @@
       "D": "Trade Law"
     },
     "correct": "A"
+  },
+  {
+    "question": "From where did the Dandi March begin?",
+    "options": {
+      "A": "Ahmedabad",
+      "B": "Bombay",
+      "C": "Sabarmati Ashram",
+      "D": "Surat"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What was the slogan during the Civil Disobedience Movement?",
+    "options": {
+      "A": "Do or Die",
+      "B": "Swaraj is my birthright",
+      "C": "Vande Mataram",
+      "D": "Purna Swaraj"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Which pact led to the suspension of the Civil Disobedience Movement in 1931?",
+    "options": {
+      "A": "Poona Pact",
+      "B": "Gandhi-Irwin Pact",
+      "C": "Lucknow Pact",
+      "D": "Delhi Pact"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "How many days did the Dandi March take to reach the sea?",
+    "options": {
+      "A": "10",
+      "B": "20",
+      "C": "24",
+      "D": "30"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which of the following was boycotted during the Non-Cooperation Movement?",
+    "options": {
+      "A": "British clothes",
+      "B": "British schools",
+      "C": "British courts",
+      "D": "All of the above"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Which session of the Congress passed the resolution for Non-Cooperation?",
+    "options": {
+      "A": "Kolkata",
+      "B": "Nagpur",
+      "C": "Lucknow",
+      "D": "Delhi"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What was the aim of the Civil Disobedience Movement?",
+    "options": {
+      "A": "To support British rule",
+      "B": "To break unfair British laws",
+      "C": "To create jobs",
+      "D": "To divide the country"
+    },
+    "correct": "B"
   }
 ]

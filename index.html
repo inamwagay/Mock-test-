@@ -35,20 +35,11 @@
   </div>
 </div>
 
-<!-- Admin Section -->
+<!-- Admin Section (Only Records) -->
 <div id="adminSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
-  <h2 class="text-2xl font-bold mb-4 text-purple-700">Add Questions (Bulk Format)</h2>
-  <textarea id="bulkQuestionInput" class="w-full h-48 p-2 border rounded mb-4" placeholder="Example:
-What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
-  <button onclick="addBulkQuestions()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full">Add Questions</button>
-  <button onclick="goToHome()" class="bg-gray-500 hover:bg-gray-700 text-white px-6 py-2 rounded-full mt-3 ml-3">Back</button>
-  <p id="adminMsg" class="mt-2 text-green-600"></p>
-
-  <h3 class="text-xl font-bold mt-6 mb-2">All Questions</h3>
-  <ul id="questionList" class="text-left text-sm space-y-2 mb-6"></ul>
-
-  <h3 class="text-xl font-bold mt-6 mb-2">User Records</h3>
-  <ul id="recordList" class="text-left text-sm space-y-1"></ul>
+  <h2 class="text-2xl font-bold mb-4 text-purple-700">📋 User Records</h2>
+  <ul id="recordList" class="text-left text-sm space-y-1 mb-6"></ul>
+  <button onclick="goToHome()" class="bg-gray-500 hover:bg-gray-700 text-white px-6 py-2 rounded-full">Back</button>
 </div>
 
 <!-- Quiz Section -->
@@ -66,6 +57,7 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
     <p id="finalScore" class="text-lg"></p>
+    <p id="remark" class="text-base mt-2 text-gray-700 font-semibold"></p>
     <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
   </div>
 </div>
@@ -95,9 +87,14 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
     }
   }
 
-  function loadQuestions() {
-    const saved = localStorage.getItem("quizQuestions");
-    questions = saved ? JSON.parse(saved) : [];
+  async function loadQuestions() {
+    try {
+      const res = await fetch("questions.json");
+      questions = await res.json();
+    } catch (e) {
+      alert("Failed to load questions.");
+      console.error(e);
+    }
   }
 
   function loadRecords() {
@@ -119,84 +116,20 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
       document.getElementById("homeSection").classList.add("hidden");
       document.getElementById("adminSection").classList.remove("hidden");
       msg.textContent = "";
-      showAllQuestions();
       loadRecords();
     } else {
       msg.textContent = "Incorrect password.";
     }
   }
 
-  function addBulkQuestions() {
-    const rawInput = document.getElementById("bulkQuestionInput").value.trim();
-    if (!rawInput) {
-      document.getElementById("adminMsg").textContent = "No input provided.";
-      return;
-    }
-
-    const lines = rawInput.split("\n").map(line => line.trim()).filter(line => line);
-    let added = 0;
-    loadQuestions();
-
-    lines.forEach(line => {
-      const parts = line.split("|");
-      if (parts.length === 6) {
-        const [q, A, B, C, D, correct] = parts;
-        questions.push({
-          question: q.trim(),
-          options: {
-            A: A.slice(2).trim(),
-            B: B.slice(2).trim(),
-            C: C.slice(2).trim(),
-            D: D.slice(2).trim()
-          },
-          correct: correct.trim().toUpperCase()
-        });
-        added++;
-      }
-    });
-
-    localStorage.setItem("quizQuestions", JSON.stringify(questions));
-    document.getElementById("adminMsg").textContent = `${added} question(s) added!`;
-    document.getElementById("bulkQuestionInput").value = '';
-    showAllQuestions();
-  }
-
-  function showAllQuestions() {
-    loadQuestions();
-    const list = document.getElementById("questionList");
-    list.innerHTML = "";
-    questions.forEach((q, index) => {
-      const li = document.createElement("li");
-      li.className = "bg-gray-100 p-2 rounded flex justify-between items-start gap-2";
-      li.innerHTML = `
-        <div>
-          <strong>Q${index + 1}:</strong> ${q.question}<br/>
-          <em>A:</em> ${q.options.A}, <em>B:</em> ${q.options.B}, <em>C:</em> ${q.options.C}, <em>D:</em> ${q.options.D}, <em>Ans:</em> ${q.correct}
-        </div>
-        <button onclick="removeQuestion(${index})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">Remove</button>
-      `;
-      list.appendChild(li);
-    });
-  }
-
-  function removeQuestion(index) {
-    loadQuestions();
-    if (confirm("Delete this question?")) {
-      questions.splice(index, 1);
-      localStorage.setItem("quizQuestions", JSON.stringify(questions));
-      showAllQuestions();
-      document.getElementById("adminMsg").textContent = "Question removed.";
-    }
-  }
-
-  function startQuiz() {
+  async function startQuiz() {
     const nameInput = document.getElementById("userNameInput");
     if (!nameInput.value.trim()) {
       alert("Please enter your name.");
       return;
     }
     userName = nameInput.value.trim();
-    loadQuestions();
+    await loadQuestions();
     if (questions.length === 0) {
       alert("No questions available.");
       return;
@@ -264,24 +197,24 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
     } else {
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
-      document.getElementById("finalScore").innerHTML = `
-        ${userName}, you scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.<br>
-        <span class="block mt-2">${getRemarks(score, questions.length)}</span>
-      `;
+      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
+
+      // Add remarks
+      let remark = "";
+      const percentage = score / questions.length;
+      if (percentage === 1) remark = "🌟 Perfect Score! Outstanding!";
+      else if (percentage >= 0.8) remark = "🎉 Excellent work!";
+      else if (percentage >= 0.6) remark = "👏 Good job!";
+      else if (percentage >= 0.4) remark = "🙂 Keep practicing!";
+      else remark = "😕 Try again. You can do better!";
+
+      document.getElementById("remark").textContent = remark;
+
       saveRecord(userName, score, questions.length);
       if (score / questions.length >= 0.7) {
         playSound('applauseSound');
       }
     }
-  }
-
-  function getRemarks(score, total) {
-    const percentage = (score / total) * 100;
-    if (percentage === 100) return "🌟 Perfect score! You're a quiz master!";
-    if (percentage >= 80) return "👏 Great job! You really know your stuff!";
-    if (percentage >= 60) return "👍 Good effort! A bit more practice and you'll ace it!";
-    if (percentage >= 40) return "🙂 Not bad! Keep learning and improving!";
-    return "📚 Don’t give up! Review the material and try again!";
   }
 
   function saveRecord(name, score, total) {
@@ -298,8 +231,6 @@ What is 2+2?|A:3|B:4|C:5|D:6|B"></textarea>
     document.getElementById("quizBox").classList.remove("hidden");
     document.getElementById("homeSection").classList.remove("hidden");
   }
-
-  loadQuestions();
 </script>
 </body>
 </html>

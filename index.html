@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function() {
-      emailjs.init("W8-8XhjP3qR4kocGt");
+      emailjs.init("W8-8XhjP3qR4kocGt"); // ✅ Your Public Key
     })();
   </script>
   <style>
@@ -156,6 +156,8 @@
       quiz_score: `${score}/${total}`,
       date_time: dateTime
     };
+
+    console.log("📤 Sending email with:", templateParams); // ✅ Debug log
 
     emailjs.send("service_iihpauj", "template_261p4gc", templateParams)
       .then(function(response) {

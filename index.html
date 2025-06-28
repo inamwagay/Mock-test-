@@ -7,8 +7,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("W8-8XhjP3qR4kocGt"); // Your EmailJS public key
+    (function () {
+      emailjs.init("W8-8XhjP3qR4kocGt"); // Replace with your own Public Key
     })();
   </script>
   <style>
@@ -17,17 +17,22 @@
     .correct { border: 2px solid #16a34a; background-color: #dcfce7; }
     .wrong { border: 2px solid #dc2626; background-color: #fee2e2; }
     .slide-in {
-      animation: slideIn 0.5s ease-in-out;
+      animation: slideIn 0.5s ease forwards;
     }
     @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
 
-<!-- Home Section -->
 <div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
   <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
   <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
@@ -36,7 +41,6 @@
   </div>
 </div>
 
-<!-- Quiz Section -->
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
@@ -48,8 +52,6 @@
       <button onclick="nextQuestion()" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium">Next</button>
     </div>
   </div>
-
-  <!-- Result -->
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
     <p id="finalScore" class="text-lg"></p>
@@ -59,45 +61,21 @@
 </div>
 
 <script>
-  // Inline question data
-  const questions = [
-    {
-      question: "What does HTML stand for?",
-      options: {
-        A: "Hyper Text Markup Language",
-        B: "Home Tool Markup Language",
-        C: "Hyperlinks and Text Markup Language",
-        D: "Hyper Trainer Marking Language"
-      },
-      correct: "A"
-    },
-    {
-      question: "Which tag is used for inserting a line break?",
-      options: {
-        A: "<br>",
-        B: "<lb>",
-        C: "<break>",
-        D: "<line>"
-      },
-      correct: "A"
-    },
-    {
-      question: "What does CSS stand for?",
-      options: {
-        A: "Computer Style Sheets",
-        B: "Creative Style Sheets",
-        C: "Cascading Style Sheets",
-        D: "Colorful Style Sheets"
-      },
-      correct: "C"
-    }
-  ];
-
+  let questions = [];
   let currentQuestion = 0;
   let score = 0;
   let timer;
   let timeLeft = 30;
   let userName = "";
+
+  async function loadQuestions() {
+    try {
+      const res = await fetch("questions.json");
+      questions = await res.json();
+    } catch (error) {
+      alert("❌ Failed to load questions.");
+    }
+  }
 
   function startTimer() {
     clearInterval(timer);
@@ -113,7 +91,7 @@
     }, 1000);
   }
 
-  function startQuiz() {
+  async function startQuiz() {
     const nameInput = document.getElementById("userNameInput");
     if (!nameInput.value.trim()) {
       alert("Please enter your name.");
@@ -121,9 +99,14 @@
     }
     userName = nameInput.value.trim();
 
+    await loadQuestions();
+    if (!questions.length) {
+      alert("No questions found.");
+      return;
+    }
+
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("quizSection").classList.remove("hidden");
-
     score = 0;
     currentQuestion = 0;
     loadQuestion(currentQuestion);
@@ -134,10 +117,10 @@
     const questionText = document.getElementById("questionText");
     const optionsDiv = document.getElementById("options");
 
-    // Reset animation
+    // Trigger animation
     questionText.classList.remove("slide-in");
     optionsDiv.classList.remove("slide-in");
-    void questionText.offsetWidth;
+    void questionText.offsetWidth; // force reflow
     void optionsDiv.offsetWidth;
 
     questionText.textContent = `${index + 1}. ${q.question}`;

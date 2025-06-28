@@ -7,9 +7,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function () {
-      emailjs.init("W8-8XhjP3qR4kocGt"); // Replace with your own Public Key
-    })();
+    window.addEventListener("DOMContentLoaded", function () {
+      if (emailjs && emailjs.init) {
+        emailjs.init("W8-8XhjP3qR4kocGt"); // Replace with your own Public Key
+      } else {
+        console.error("EmailJS initialization failed.");
+      }
+    });
   </script>
   <style>
     body { font-family: 'Segoe UI', sans-serif; }
@@ -114,6 +118,7 @@
 
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("quizSection").classList.remove("hidden");
+    document.getElementById("progressBar").classList.remove("hidden");
     score = 0;
     currentQuestion = 0;
     loadQuestion(currentQuestion);
@@ -125,13 +130,11 @@
     const optionsDiv = document.getElementById("options");
     const progressBar = document.getElementById("progressBar");
 
-    // Update progress bar
     progressBar.textContent = `📘 Question ${index + 1} of ${questions.length}`;
 
-    // Trigger animation
     questionText.classList.remove("slide-in");
     optionsDiv.classList.remove("slide-in");
-    void questionText.offsetWidth; // force reflow
+    void questionText.offsetWidth;
     void optionsDiv.offsetWidth;
 
     questionText.textContent = `${index + 1}. ${q.question}`;
@@ -172,6 +175,7 @@
     } else {
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
+      document.getElementById("progressBar").classList.add("hidden");
       document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
       document.getElementById("remarks").textContent = getRemarks(score, questions.length);
       saveRecord(userName, score, questions.length);
@@ -212,6 +216,7 @@
         statusEl.classList.remove("text-red-600");
         statusEl.classList.add("text-green-600");
       }, function(error) {
+        console.error("EmailJS Error:", error);
         statusEl.textContent = "❌ Failed to send quiz result email.";
         statusEl.classList.remove("text-green-600");
         statusEl.classList.add("text-red-600");
@@ -223,6 +228,7 @@
     document.getElementById("resultBox").classList.add("hidden");
     document.getElementById("quizBox").classList.remove("hidden");
     document.getElementById("homeSection").classList.remove("hidden");
+    document.getElementById("progressBar").classList.add("hidden");
   }
 </script>
 

@@ -160,12 +160,12 @@
     };
 
     const statusEl = document.getElementById("emailStatus");
-    statusEl.textContent = "📤 Sending result email...";
+    statusEl.textContent = "Saving results ";
 
     emailjs.send("service_iihpauj", "template_261p4gc", templateParams)
       .then(function(response) {
         console.log("✅ Email sent", response.status, response.text);
-        statusEl.textContent = "✅ Quiz result emailed successfully!";
+        statusEl.textContent = "✅ Quiz results saved successfully!";
         statusEl.classList.remove("text-red-600");
         statusEl.classList.add("text-green-600");
       }, function(error) {

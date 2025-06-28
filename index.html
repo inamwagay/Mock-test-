@@ -105,7 +105,6 @@
     const q = questions[index];
     document.getElementById("questionText").textContent = q.question;
     document.getElementById("questionProgress").textContent = `Question ${index + 1} of ${questions.length}`;
-
     const optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = '';
 
@@ -141,20 +140,18 @@
     } else {
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
-
-      const total = questions.length;
-      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${total}.`;
+      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
 
       let remark = "";
-      const percent = (score / total) * 100;
+      const percent = (score / questions.length) * 100;
       if (percent === 100) remark = "🏆 Excellent work!";
       else if (percent >= 80) remark = "🎉 Great job!";
       else if (percent >= 50) remark = "👍 Good effort!";
       else remark = "📚 Keep practicing!";
       document.getElementById("finalRemark").textContent = remark;
 
-      saveRecord(userName, score, total);
-      sendEmail(userName, score, total);
+      saveRecord(userName, score, questions.length);
+      sendEmail(userName, score, questions.length);
     }
   }
 

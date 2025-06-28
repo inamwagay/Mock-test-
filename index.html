@@ -44,7 +44,7 @@
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
-      <div class="text-xl font-bold mb-2" id="questionText"></div>
+      <div id="questionText" class="text-xl font-bold mb-2"></div>
       <div id="options" class="grid gap-3"></div>
     </div>
     <div class="flex items-center justify-between">
@@ -54,8 +54,8 @@
   </div>
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
-    <p id="finalScore" class="text-lg font-medium"></p>
-    <p id="scoreRemark" class="text-base text-gray-700 mb-2"></p>
+    <p id="finalScore" class="text-lg"></p>
+    <p id="finalRemark" class="mt-2 text-base font-semibold text-indigo-600"></p>
     <p id="emailStatus" class="mt-3 text-sm text-gray-700"></p>
     <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
   </div>
@@ -124,13 +124,13 @@
     void optionsDiv.offsetWidth;
 
     questionText.innerHTML = `
-      <div class="font-semibold text-sm text-gray-500 mb-1">
+      <div class="text-sm text-indigo-600 font-semibold mb-2 tracking-wide uppercase">
         Question ${index + 1} of ${questions.length}
       </div>
-      <div>${q.question}</div>
+      <div class="text-gray-800">${q.question}</div>
     `;
-    optionsDiv.innerHTML = "";
 
+    optionsDiv.innerHTML = "";
     Object.entries(q.options).forEach(([key, val]) => {
       const label = document.createElement("label");
       label.className = "flex items-center gap-2 bg-indigo-100 p-3 rounded cursor-pointer";
@@ -166,23 +166,25 @@
     } else {
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
+      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
 
-      const finalScore = document.getElementById("finalScore");
-      const remark = document.getElementById("scoreRemark");
-      finalScore.textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
-      remark.textContent = getRemark(score, questions.length);
+      // 🎯 Add dynamic remarks
+      let remark = "";
+      const percentage = (score / questions.length) * 100;
+      if (percentage === 100) {
+        remark = "Outstanding!";
+      } else if (percentage >= 80) {
+        remark = "Great job!";
+      } else if (percentage >= 50) {
+        remark = "Good effort!";
+      } else {
+        remark = "Keep practicing!";
+      }
+      document.getElementById("finalRemark").textContent = remark;
 
       saveRecord(userName, score, questions.length);
       sendEmail(userName, score, questions.length);
     }
-  }
-
-  function getRemark(score, total) {
-    const percent = (score / total) * 100;
-    if (percent >= 90) return "🌟 Excellent work!";
-    if (percent >= 70) return "👍 Good job!";
-    if (percent >= 50) return "🙂 Not bad, keep practicing!";
-    return "💡 Don't give up! Try again.";
   }
 
   function saveRecord(name, score, total) {

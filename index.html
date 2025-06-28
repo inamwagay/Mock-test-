@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MCQ Quiz App</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
   <style>
     body { font-family: 'Segoe UI', sans-serif; }
     .hidden { display: none; }
@@ -14,12 +15,21 @@
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
 
+<!-- Audio -->
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="wrongSound" src="wrong.mp3"></audio>
+<audio id="applauseSound" src="applause.mp3"></audio>
+
+<!-- Home -->
 <div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
   <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
   <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
-  <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Start Quiz</button>
+  <div class="flex justify-center gap-6 mb-6">
+    <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Take Quiz</button>
+  </div>
 </div>
 
+<!-- Quiz Section -->
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
   <div id="quizBox">
     <div class="mb-6">
@@ -34,7 +44,7 @@
   <div id="resultBox" class="hidden text-center">
     <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
     <p id="finalScore" class="text-lg mb-2"></p>
-    <p id="remarks" class="text-md font-medium text-purple-700"></p>
+    <p id="remarkText" class="text-xl font-semibold text-purple-700 mb-4"></p>
     <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
   </div>
 </div>
@@ -47,29 +57,39 @@
   let timeLeft = 30;
   let userName = "";
 
+  // EmailJS init
+  emailjs.init("W8-8XhjP3qR4kocGt");
+
   async function loadQuestions() {
     try {
-      const response = await fetch("questions.json");
-      questions = await response.json();
-    } catch (error) {
-      alert("Could not load questions. Make sure questions.json is in the same folder.");
+      const res = await fetch("questions.json");
+      questions = await res.json();
+    } catch (err) {
+      alert("Failed to load questions.");
+      questions = [];
     }
   }
 
-  async function startQuiz() {
-    const input = document.getElementById("userNameInput").value.trim();
-    if (!input) {
+  function playSound(id, volume = 0.3) {
+    const audio = document.getElementById(id);
+    if (audio) {
+      audio.volume = volume;
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    }
+  }
+
+  function startQuiz() {
+    const nameInput = document.getElementById("userNameInput");
+    if (!nameInput.value.trim()) {
       alert("Please enter your name.");
       return;
     }
-    userName = input;
-    await loadQuestions();
-
+    userName = nameInput.value.trim();
     if (questions.length === 0) {
       alert("No questions found.");
       return;
     }
-
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("quizSection").classList.remove("hidden");
     score = 0;
@@ -82,14 +102,12 @@
     document.getElementById("questionText").textContent = `${index + 1}. ${q.question}`;
     const optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = '';
-
     Object.entries(q.options).forEach(([key, val]) => {
       const label = document.createElement("label");
       label.className = "flex items-center gap-2 bg-indigo-100 p-3 rounded cursor-pointer";
       label.innerHTML = `<input type="radio" name="answer" value="${key}" onchange="checkAnswer(this, '${q.correct}')"> ${key}. ${val}`;
       optionsDiv.appendChild(label);
     });
-
     startTimer();
   }
 
@@ -113,9 +131,11 @@
     const selected = input.value;
     if (selected === correct) {
       input.parentElement.classList.add("correct");
+      playSound('correctSound');
       score++;
     } else {
       input.parentElement.classList.add("wrong");
+      playSound('wrongSound');
       const correctInput = Array.from(document.querySelectorAll('input[name="answer"]')).find(i => i.value === correct);
       if (correctInput) correctInput.parentElement.classList.add("correct");
     }
@@ -130,16 +150,30 @@
       document.getElementById("quizBox").classList.add("hidden");
       document.getElementById("resultBox").classList.remove("hidden");
       document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
-      document.getElementById("remarks").textContent = getRemarks(score, questions.length);
+      document.getElementById("remarkText").textContent = getRemarks(score, questions.length);
+      sendEmailResult(userName, score, questions.length);
+      playSound('applauseSound');
     }
   }
 
   function getRemarks(score, total) {
     const percentage = (score / total) * 100;
-    if (percentage === 100) return "🏆 Excellent! Perfect score!";
-    if (percentage >= 80) return "🎉 Great job!";
-    if (percentage >= 50) return "🙂 Good effort!";
-    return "📚 Keep practicing!";
+    if (percentage === 100) return "Outstanding! 🏆";
+    if (percentage >= 80) return "Excellent performance! 🎉";
+    if (percentage >= 60) return "Good job! 👍";
+    if (percentage >= 40) return "You can do better! 👏";
+    return "Needs improvement. Don't give up! 💪";
+  }
+
+  function sendEmailResult(name, score, total) {
+    emailjs.send("service_iihpauj", "template_261p4gc", {
+      user_name: name,
+      user_score: `${score}/${total}`,
+    }).then(() => {
+      console.log("Email sent!");
+    }).catch(err => {
+      console.error("Email error:", err);
+    });
   }
 
   function goToHome() {
@@ -148,6 +182,8 @@
     document.getElementById("quizBox").classList.remove("hidden");
     document.getElementById("homeSection").classList.remove("hidden");
   }
+
+  window.onload = loadQuestions;
 </script>
 </body>
 </html>

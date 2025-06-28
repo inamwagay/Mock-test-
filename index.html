@@ -1,209 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MCQ Quiz App</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function () {
-      emailjs.init("W8-8XhjP3qR4kocGt"); // Replace with your own Public Key
-    })();
-  </script>
-  <style>
-    body { font-family: 'Segoe UI', sans-serif; }
-    .hidden { display: none; }
-    .correct { border: 2px solid #16a34a; background-color: #dcfce7; }
-    .wrong { border: 2px solid #dc2626; background-color: #fee2e2; }
-    .slide-in {
-      animation: slideIn 0.5s ease forwards;
-    }
-    @keyframes slideIn {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCQ Quiz App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s; }
+    .hidden { display: none; }
+    .correct { border: 2px solid #16a34a; background-color: #dcfce7; }
+    .wrong { border: 2px solid #dc2626; background-color: #fee2e2; }
+    .dark-mode { background: #1f2937; color: #f9fafb; }
+    .dark-mode input, .dark-mode button, .dark-mode .bg-white { background: #374151 !important; color: #f9fafb !important; }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      animation: fall 2s linear infinite;
+      border-radius: 50%;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-purple-500 via-indigo-500 to-pink-400 min-h-screen flex flex-col items-center justify-center p-6 text-gray-800">
 
+<!-- DARK MODE TOGGLE -->
+<button onclick="toggleDarkMode()" class="absolute top-4 right-4 bg-black text-white px-4 py-2 rounded">🌙 Toggle Dark Mode</button>
+
+<!-- CONFETTI CANVAS -->
+<div id="confettiContainer" class="pointer-events-none"></div>
+
+<!-- HOME SECTION -->
 <div id="homeSection" class="max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8 text-center">
-  <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
-  <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
-  <div class="flex justify-center gap-6 mb-6">
-    <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Take Quiz</button>
-  </div>
+  <h1 class="text-4xl font-bold mb-6 text-purple-700">🎓 MCQ Quiz App</h1>
+  <input id="userNameInput" type="text" placeholder="Enter your name" class="w-full mb-4 p-2 border rounded">
+  <div class="flex justify-center gap-6 mb-6">
+    <button onclick="startQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold">Take Quiz</button>
+  </div>
 </div>
 
+<!-- QUIZ SECTION -->
 <div id="quizSection" class="hidden max-w-2xl w-full bg-white/90 rounded-xl shadow-lg p-8">
-  <div id="quizBox">
-    <div class="mb-6">
-      <div class="text-xl font-bold mb-2" id="questionText"></div>
-      <div id="options" class="grid gap-3"></div>
-    </div>
-    <div class="flex items-center justify-between">
-      <span class="font-semibold text-red-600">⏱️ Time Left: <span id="timer">30</span>s</span>
-      <button onclick="nextQuestion()" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium">Next</button>
-    </div>
-  </div>
-  <div id="resultBox" class="hidden text-center">
-    <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
-    <p id="finalScore" class="text-lg"></p>
-    <p id="emailStatus" class="mt-3 text-sm text-gray-700"></p>
-    <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
-  </div>
+  <div class="mb-4">
+    <div class="flex justify-between items-center mb-2">
+      <span class="font-semibold text-red-600">⏱️ Time Left: <span id="timer">30</span>s</span>
+      <span class="text-sm" id="progressText">Question 1 of 1</span>
+    </div>
+    <div class="h-2 bg-gray-300 rounded overflow-hidden">
+      <div id="progressBar" class="h-full bg-green-500 w-0 transition-all duration-300"></div>
+    </div>
+  </div>
+
+  <div id="quizBox">
+    <div class="mb-6">
+      <div class="text-xl font-bold mb-2" id="questionText"></div>
+      <div id="options" class="grid gap-3"></div>
+    </div>
+    <div class="flex items-center justify-between">
+      <button onclick="nextQuestion()" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium">Next</button>
+    </div>
+  </div>
+
+  <div id="resultBox" class="hidden text-center">
+    <h2 class="text-2xl font-bold mb-4">🎉 Quiz Completed!</h2>
+    <p id="finalScore" class="text-lg mb-4"></p>
+    <div id="reviewAnswers" class="text-left text-sm max-h-60 overflow-auto mb-4"></div>
+    <button onclick="goToHome()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">Back to Home</button>
+  </div>
 </div>
 
 <script>
-  let questions = [];
-  let currentQuestion = 0;
-  let score = 0;
-  let timer;
-  let timeLeft = 30;
-  let userName = "";
+  let questions = [];
+  let currentQuestion = 0;
+  let score = 0;
+  let timer;
+  let timeLeft = 30;
+  let userName = "";
+  let userAnswers = [];
 
-  async function loadQuestions() {
-    try {
-      const res = await fetch("questions.json");
-      questions = await res.json();
-    } catch (error) {
-      alert("❌ Failed to load questions.");
-    }
-  }
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
 
-  function startTimer() {
-    clearInterval(timer);
-    timeLeft = 30;
-    document.getElementById("timer").textContent = timeLeft;
-    timer = setInterval(() => {
-      timeLeft--;
-      document.getElementById("timer").textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        nextQuestion();
-      }
-    }, 1000);
-  }
+  async function loadQuestions() {
+    try {
+      const res = await fetch("questions.json");
+      questions = await res.json();
+    } catch (error) {
+      alert("❌ Failed to load questions.");
+    }
+  }
 
-  async function startQuiz() {
-    const nameInput = document.getElementById("userNameInput");
-    if (!nameInput.value.trim()) {
-      alert("Please enter your name.");
-      return;
-    }
-    userName = nameInput.value.trim();
+  function startTimer() {
+    clearInterval(timer);
+    timeLeft = 30;
+    document.getElementById("timer").textContent = timeLeft;
+    timer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer").textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        nextQuestion();
+      }
+    }, 1000);
+  }
 
-    await loadQuestions();
-    if (!questions.length) {
-      alert("No questions found.");
-      return;
-    }
+  async function startQuiz() {
+    const nameInput = document.getElementById("userNameInput");
+    if (!nameInput.value.trim()) {
+      alert("Please enter your name.");
+      return;
+    }
+    userName = nameInput.value.trim();
+    await loadQuestions();
+    if (!questions.length) {
+      alert("No questions found.");
+      return;
+    }
 
-    document.getElementById("homeSection").classList.add("hidden");
-    document.getElementById("quizSection").classList.remove("hidden");
-    score = 0;
-    currentQuestion = 0;
-    loadQuestion(currentQuestion);
-  }
+    document.getElementById("homeSection").classList.add("hidden");
+    document.getElementById("quizSection").classList.remove("hidden");
+    score = 0;
+    currentQuestion = 0;
+    userAnswers = [];
+    loadQuestion(currentQuestion);
+  }
 
-  function loadQuestion(index) {
-    const q = questions[index];
-    const questionText = document.getElementById("questionText");
-    const optionsDiv = document.getElementById("options");
+  function loadQuestion(index) {
+    const q = questions[index];
+    document.getElementById("questionText").textContent = `${index + 1}. ${q.question}`;
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = '';
 
-    // Trigger animation
-    questionText.classList.remove("slide-in");
-    optionsDiv.classList.remove("slide-in");
-    void questionText.offsetWidth; // force reflow
-    void optionsDiv.offsetWidth;
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement("label");
+      label.className = "flex items-center gap-2 bg-indigo-100 p-3 rounded cursor-pointer";
+      label.innerHTML = `<input type="radio" name="answer" value="${key}" onchange="checkAnswer(this, '${q.correct}')"> ${key}. ${val}`;
+      optionsDiv.appendChild(label);
+    });
 
-    questionText.textContent = `${index + 1}. ${q.question}`;
-    optionsDiv.innerHTML = "";
+    updateProgress();
+    startTimer();
+  }
 
-    Object.entries(q.options).forEach(([key, val]) => {
-      const label = document.createElement("label");
-      label.className = "flex items-center gap-2 bg-indigo-100 p-3 rounded cursor-pointer";
-      label.innerHTML = `<input type="radio" name="answer" value="${key}" onchange="checkAnswer(this, '${q.correct}')"> ${key}. ${val}`;
-      optionsDiv.appendChild(label);
-    });
+  function checkAnswer(input, correct) {
+    const allLabels = document.querySelectorAll('#options label');
+    allLabels.forEach(l => l.classList.remove('correct', 'wrong'));
+    const selected = input.value;
+    userAnswers[currentQuestion] = { selected, correct };
+    if (selected === correct) {
+      input.parentElement.classList.add("correct");
+      score++;
+    } else {
+      input.parentElement.classList.add("wrong");
+      const correctInput = Array.from(document.querySelectorAll('input[name="answer"]')).find(i => i.value === correct);
+      if (correctInput) correctInput.parentElement.classList.add("correct");
+    }
+  }
 
-    questionText.classList.add("slide-in");
-    optionsDiv.classList.add("slide-in");
+  function nextQuestion() {
+    clearInterval(timer);
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      loadQuestion(currentQuestion);
+    } else {
+      finishQuiz();
+    }
+  }
 
-    startTimer();
-  }
+  function updateProgress() {
+    const pct = ((currentQuestion + 1) / questions.length) * 100;
+    document.getElementById("progressBar").style.width = `${pct}%`;
+    document.getElementById("progressText").textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+  }
 
-  function checkAnswer(input, correct) {
-    const allLabels = document.querySelectorAll('#options label');
-    allLabels.forEach(l => l.classList.remove('correct', 'wrong'));
-    const selected = input.value;
-    if (selected === correct) {
-      input.parentElement.classList.add("correct");
-      score++;
-    } else {
-      input.parentElement.classList.add("wrong");
-      const correctInput = Array.from(document.querySelectorAll('input[name="answer"]')).find(i => i.value === correct);
-      if (correctInput) correctInput.parentElement.classList.add("correct");
-    }
-  }
+  function finishQuiz() {
+    document.getElementById("quizBox").classList.add("hidden");
+    document.getElementById("resultBox").classList.remove("hidden");
+    document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
 
-  function nextQuestion() {
-    clearInterval(timer);
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-      loadQuestion(currentQuestion);
-    } else {
-      document.getElementById("quizBox").classList.add("hidden");
-      document.getElementById("resultBox").classList.remove("hidden");
-      document.getElementById("finalScore").textContent = `${userName}, you scored ${score} out of ${questions.length}.`;
-      saveRecord(userName, score, questions.length);
-      sendEmail(userName, score, questions.length);
-    }
-  }
+    // Show Review
+    const review = userAnswers.map((ans, i) => {
+      const q = questions[i];
+      const correctText = q.options[q.correct];
+      const userText = q.options[ans.selected] || "No answer";
+      const isCorrect = ans.selected === ans.correct;
+      return `<div class="mb-2">
+          <strong>Q${i + 1}:</strong> ${q.question}<br/>
+          <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">Your Answer: ${userText}</span><br/>
+          <span class="text-green-800">Correct Answer: ${correctText}</span>
+      </div>`;
+    }).join('');
+    document.getElementById("reviewAnswers").innerHTML = review;
 
-  function saveRecord(name, score, total) {
-    const dateTime = new Date().toLocaleString();
-    const records = JSON.parse(localStorage.getItem("quizRecords") || "[]");
-    records.push({ name, score, total, time: dateTime });
-    localStorage.setItem("quizRecords", JSON.stringify(records));
-  }
+    // Confetti if score > 70%
+    if ((score / questions.length) >= 0.7) {
+      launchConfetti();
+    }
+  }
 
-  function sendEmail(name, score, total) {
-    const dateTime = new Date().toLocaleString();
-    const templateParams = {
-      user_name: name,
-      user_score: score,
-      total_score: total,
-      quiz_time: dateTime
-    };
+  function goToHome() {
+    location.reload();
+  }
 
-    const statusEl = document.getElementById("emailStatus");
-    statusEl.textContent = "Saving results...";
+  function launchConfetti() {
+    const container = document.getElementById("confettiContainer");
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = `${Math.random() * window.innerWidth}px`;
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+      container.appendChild(confetti);
 
-    emailjs.send("service_iihpauj", "template_261p4gc", templateParams)
-      .then(function(response) {
-        statusEl.textContent = "✅ Quiz results saved successfully!";
-        statusEl.classList.remove("text-red-600");
-        statusEl.classList.add("text-green-600");
-      }, function(error) {
-        statusEl.textContent = "❌ Failed to send quiz result email.";
-        statusEl.classList.remove("text-green-600");
-        statusEl.classList.add("text-red-600");
-      });
-  }
-
-  function goToHome() {
-    document.getElementById("quizSection").classList.add("hidden");
-    document.getElementById("resultBox").classList.add("hidden");
-    document.getElementById("quizBox").classList.remove("hidden");
-    document.getElementById("homeSection").classList.remove("hidden");
-  }
+      setTimeout(() => confetti.remove(), 4000);
+    }
+  }
 </script>
 
 </body>

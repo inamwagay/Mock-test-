@@ -100,13 +100,203 @@
     "correct": "A"
   },
   {
-    "question": "NATO establishes its new land command named “Multi Corps Land Component Command” in which country?",
+    "question": "Not a word was spoken by the criminal in self-defense.",
     "options": {
-      "A": "Finland",
-      "B": "Ukraine",
-      "C": "Israel",
-      "D": "Iran"
+      "A": "The criminal spoke not a word in self-defense.",
+      "B": "The criminal in self defense spoke no word.",
+      "C": "The criminal did not speak a word in self defense.",
+      "D": "The criminal spoke in self defense, not a word."
+    },
+    "correct": "C"
+  },
+  {
+    "question": "He mailed his application for a new job.",
+    "options": {
+      "A": "The application for a new job is mailed by him.",
+      "B": "The application for a new job was mailed by him.",
+      "C": "He is the mailer of the application for a new job.",
+      "D": "He was the mailer of the application for a new job."
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Would you mind………the suitcase, Sir?",
+    "options": {
+      "A": "Open",
+      "B": "Opening",
+      "C": "To open",
+      "D": "Opened"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "When she parted ........ her parents, her eyes were full of tears.",
+    "options": {
+      "A": "From",
+      "B": "Away",
+      "C": "Off",
+      "D": "With"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "He went ………. to oblige his superior.",
+    "options": {
+      "A": "On his way",
+      "B": "Out of his way",
+      "C": "In his way",
+      "D": "With his way"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "During a period of protracted illness, the sick can become infirm, ………. both the strength to work and many of the specific skills that were once possessed.",
+    "options": {
+      "A": "Regaining",
+      "B": "Denying",
+      "C": "Pursuing",
+      "D": "Losing"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "The members of the religious sect ostracized the who ……… had abandoned their faith.",
+    "options": {
+      "A": "Coward",
+      "B": "Litigant",
+      "C": "Recreant",
+      "D": "Suppliant"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Cultivated",
+    "options": {
+      "A": "Crude",
+      "B": "Genteel",
+      "C": "Suave",
+      "D": "Refined"
     },
     "correct": "A"
+  },
+  {
+    "question": "Impertinent",
+    "options": {
+      "A": "Insolent",
+      "B": "Impudent",
+      "C": "Cheeky",
+      "D": "Courteous"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Dissent",
+    "options": {
+      "A": "Agreement",
+      "B": "Dispute",
+      "C": "Disunity",
+      "D": "Controversy"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Seamy",
+    "options": {
+      "A": "Unpleasant",
+      "B": "Sincere",
+      "C": "Honest",
+      "D": "Pure"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Brutalize",
+    "options": {
+      "A": "Devise",
+      "B": "Strike",
+      "C": "Stir",
+      "D": "Ill-treat"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Pinnacle",
+    "options": {
+      "A": "Summit",
+      "B": "Pit",
+      "C": "Capsule",
+      "D": "Heart"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Garble",
+    "options": {
+      "A": "Communicate",
+      "B": "Explain",
+      "C": "Confuse",
+      "D": "Hide"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Pompous",
+    "options": {
+      "A": "Pretentious",
+      "B": "Supportive",
+      "C": "Demanding",
+      "D": "Flashy"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "A person of obscure position who has gained wealth.",
+    "options": {
+      "A": "Extravagant",
+      "B": "Promiscuous",
+      "C": "Parvenu",
+      "D": "Sumptuary"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "A study of sounds is known as",
+    "options": {
+      "A": "Semantics",
+      "B": "Stylistics",
+      "C": "Linguistics",
+      "D": "Phonetics"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "One who totally abstains from alcoholic drinks",
+    "options": {
+      "A": "Puritan",
+      "B": "Samaritan",
+      "C": "Pedant",
+      "D": "Teetotaller"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "A name adopted by an author in his writings",
+    "options": {
+      "A": "Title",
+      "B": "Nomenclature",
+      "C": "Nickname",
+      "D": "Pseudonym"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "The line which a plough cuts in the ground",
+    "options": {
+      "A": "Vale",
+      "B": "Trench",
+      "C": "Furrow",
+      "D": "Trough"
+    },
+    "correct": "C"
   }
 ]

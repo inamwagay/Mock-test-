@@ -1,152 +1,809 @@
 [
   {
-    "question": "Who launched the Non-Cooperation Movement?",
+    "question": "With our great annoyance we found the ground filled with broken glasses.",
     "options": {
-      "A": "Jawaharlal Nehru",
-      "B": "Subhas Chandra Bose",
-      "C": "Mahatma Gandhi",
-      "D": "Bal Gangadhar Tilak"
+      "A": "With our great annoyance",
+      "B": "we found the ground",
+      "C": "filled with broken glasses.",
+      "D": "No error"
     },
     "correct": "C"
   },
   {
-    "question": "In which year did the Non-Cooperation Movement begin?",
+    "question": "The new device aims at eliminating the risk of short-circuiting.",
     "options": {
-      "A": "1920",
-      "B": "1919",
-      "C": "1930",
-      "D": "1942"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "What was the main reason for launching the Non-Cooperation Movement?",
-    "options": {
-      "A": "Jallianwala Bagh Massacre",
-      "B": "Partition of Bengal",
-      "C": "Dandi March",
-      "D": "Simon Commission"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "Which movement involved the boycott of British goods and institutions?",
-    "options": {
-      "A": "Civil Disobedience Movement",
-      "B": "Non-Cooperation Movement",
-      "C": "Quit India Movement",
-      "D": "Swadeshi Movement"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "Which incident led to the withdrawal of the Non-Cooperation Movement?",
-    "options": {
-      "A": "Jallianwala Bagh Massacre",
-      "B": "Dandi March",
-      "C": "Chauri Chaura incident",
-      "D": "Simon Commission protests"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "When was the Civil Disobedience Movement launched?",
-    "options": {
-      "A": "1920",
-      "B": "1930",
-      "C": "1942",
-      "D": "1915"
-    },
-    "correct": "B"
-  },
-  {
-    "question": "What action started the Civil Disobedience Movement?",
-    "options": {
-      "A": "Boycott of foreign goods",
-      "B": "Burning of clothes",
-      "C": "Dandi March",
-      "D": "Protests against Simon Commission"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "The Dandi March was led by Gandhi to break which British law?",
-    "options": {
-      "A": "Salt Law",
-      "B": "Land Revenue Law",
-      "C": "Education Law",
-      "D": "Trade Law"
-    },
-    "correct": "A"
-  },
-  {
-    "question": "From where did the Dandi March begin?",
-    "options": {
-      "A": "Ahmedabad",
-      "B": "Bombay",
-      "C": "Sabarmati Ashram",
-      "D": "Surat"
-    },
-    "correct": "C"
-  },
-  {
-    "question": "What was the slogan during the Civil Disobedience Movement?",
-    "options": {
-      "A": "Do or Die",
-      "B": "Swaraj is my birthright",
-      "C": "Vande Mataram",
-      "D": "Purna Swaraj"
+      "A": "The new device",
+      "B": "aims at eliminating",
+      "C": "the risk of short-circuiting.",
+      "D": "No error"
     },
     "correct": "D"
   },
   {
-    "question": "Which pact led to the suspension of the Civil Disobedience Movement in 1931?",
+    "question": "I wish to heartily congratulate you for your astounding success.",
     "options": {
-      "A": "Poona Pact",
-      "B": "Gandhi-Irwin Pact",
-      "C": "Lucknow Pact",
-      "D": "Delhi Pact"
+      "A": "I wish to heartily",
+      "B": "congratulate you for",
+      "C": "your astounding success.",
+      "D": "No error"
     },
     "correct": "B"
   },
   {
-    "question": "How many days did the Dandi March take to reach the sea?",
+    "question": "The visitor took the vacant seat next from mine one of the many huge sofas in the room.",
     "options": {
-      "A": "10",
-      "B": "20",
-      "C": "24",
-      "D": "30"
+      "A": "The visitor took the vacant seat",
+      "B": "next from mine",
+      "C": "one of the many huge sofas in the room.",
+      "D": "No error"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "He was a learnt man among lords, and a lord among learned men.",
+    "options": {
+      "A": "He was",
+      "B": "a learnt man among lords,",
+      "C": "and a lord among learned men.",
+      "D": "No error"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "My efforts at pest control went in vain, I have to go back to the drawing board.",
+    "options": {
+      "A": "plan it all over again",
+      "B": "take professional help",
+      "C": "spend sometime researching abroad",
+      "D": "work at night"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Indians are going places in the field of software technology.",
+    "options": {
+      "A": "Going abroad",
+      "B": "Going to spaces",
+      "C": "Talented and successful",
+      "D": "Friendly and amicable"
     },
     "correct": "C"
   },
   {
-    "question": "Which of the following was boycotted during the Non-Cooperation Movement?",
+    "question": "She is a person who pulls no punches.",
     "options": {
-      "A": "British clothes",
-      "B": "British schools",
-      "C": "British courts",
-      "D": "All of the above"
-    },
-    "correct": "D"
-  },
-  {
-    "question": "Which session of the Congress passed the resolution for Non-Cooperation?",
-    "options": {
-      "A": "Kolkata",
-      "B": "Nagpur",
-      "C": "Lucknow",
-      "D": "Delhi"
+      "A": "Speaks politely",
+      "B": "Speaks frankly",
+      "C": "Speaks rudely",
+      "D": "Speaks sweetly"
     },
     "correct": "B"
   },
   {
-    "question": "What was the aim of the Civil Disobedience Movement?",
+    "question": "For any group work to be successful. It is important that everyone is on the same page.",
     "options": {
-      "A": "To support British rule",
-      "B": "To break unfair British laws",
-      "C": "To create jobs",
-      "D": "To divide the country"
+      "A": "Present for the meeting",
+      "B": "Registered for the work",
+      "C": "Willing to pay the same fees",
+      "D": "Thinks in a similar way"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Our plan to go to London is in the air.",
+    "options": {
+      "A": "Undecided",
+      "B": "Certain",
+      "C": "Under consideration",
+      "D": "For approval"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Not a word was spoken by the criminal in self-defense.",
+    "options": {
+      "A": "The criminal spoke not a word in self-defense.",
+      "B": "The criminal in self defense spoke no word.",
+      "C": "The criminal did not speak a word in self defense.",
+      "D": "The criminal spoke in self defense, not a word."
+    },
+    "correct": "C"
+  },
+  {
+    "question": "He mailed his application for a new job.",
+    "options": {
+      "A": "The application for a new job is mailed by him.",
+      "B": "The application for a new job was mailed by him.",
+      "C": "He is the mailer of the application for a new job.",
+      "D": "He was the mailer of the application for a new job."
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Would you mind………the suitcase, Sir?",
+    "options": {
+      "A": "Open",
+      "B": "Opening",
+      "C": "To open",
+      "D": "Opened"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "When she parted ........ her parents, her eyes were full of tears.",
+    "options": {
+      "A": "From",
+      "B": "Away",
+      "C": "Off",
+      "D": "With"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "He went ………. to oblige his superior.",
+    "options": {
+      "A": "On his way",
+      "B": "Out of his way",
+      "C": "In his way",
+      "D": "With his way"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "During a period of protracted illness, the sick can become infirm, ………. both the strength to work and many of the specific skills that were once possessed.",
+    "options": {
+      "A": "Regaining",
+      "B": "Denying",
+      "C": "Pursuing",
+      "D": "Losing"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "The members of the religious sect ostracized the who ……… had abandoned their faith.",
+    "options": {
+      "A": "Coward",
+      "B": "Litigant",
+      "C": "Recreant",
+      "D": "Suppliant"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Cultivated",
+    "options": {
+      "A": "Crude",
+      "B": "Genteel",
+      "C": "Suave",
+      "D": "Refined"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Impertinent",
+    "options": {
+      "A": "Insolent",
+      "B": "Impudent",
+      "C": "Cheeky",
+      "D": "Courteous"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Dissent",
+    "options": {
+      "A": "Agreement",
+      "B": "Dispute",
+      "C": "Disunity",
+      "D": "Controversy"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Seamy",
+    "options": {
+      "A": "Unpleasant",
+      "B": "Sincere",
+      "C": "Honest",
+      "D": "Pure"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Brutalize",
+    "options": {
+      "A": "Devise",
+      "B": "Strike",
+      "C": "Stir",
+      "D": "Ill-treat"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Pinnacle",
+    "options": {
+      "A": "Summit",
+      "B": "Pit",
+      "C": "Capsule",
+      "D": "Heart"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Garble",
+    "options": {
+      "A": "Communicate",
+      "B": "Explain",
+      "C": "Confuse",
+      "D": "Hide"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Pompous",
+    "options": {
+      "A": "Pretentious",
+      "B": "Supportive",
+      "C": "Demanding",
+      "D": "Flashy"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "A person of obscure position who has gained wealth.",
+    "options": {
+      "A": "Extravagant",
+      "B": "Promiscuous",
+      "C": "Parvenu",
+      "D": "Sumptuary"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "A study of sounds is known as",
+    "options": {
+      "A": "Semantics",
+      "B": "Stylistics",
+      "C": "Linguistics",
+      "D": "Phonetics"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "One who totally abstains from alcoholic drinks",
+    "options": {
+      "A": "Puritan",
+      "B": "Samaritan",
+      "C": "Pedant",
+      "D": "Teetotaller"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "A name adopted by an author in his writings",
+    "options": {
+      "A": "Title",
+      "B": "Nomenclature",
+      "C": "Nickname",
+      "D": "Pseudonym"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "The line which a plough cuts in the ground",
+    "options": {
+      "A": "Vale",
+      "B": "Trench",
+      "C": "Furrow",
+      "D": "Trough"
+    },
+    "correct": "C"
+  }
+
+  {
+    "question": "Who decides whether a juvenile criminal in the age group of 16–18 should be tried as an adult or not?",
+    "options": {
+      "A": "Juvenile Justice Board",
+      "B": "Supreme Court",
+      "C": "Chief Justice of India",
+      "D": "President"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "NATO establishes its new land command named “Multi Corps Land Component Command” in which country?",
+    "options": {
+      "A": "Finland",
+      "B": "Ukraine",
+      "C": "Israel",
+      "D": "Iran"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which among the following organised the First Asian Buddhist Summit (ABS) in New Delhi?",
+    "options": {
+      "A": "Ministry of External Affairs",
+      "B": "Ministry of Culture",
+      "C": "Ministry of Home Affairs",
+      "D": "Buddhist World Federation"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Who officially took over as the chairperson of ASOSAI for the term 2024-2027?",
+    "options": {
+      "A": "Girish Chandra Murmu",
+      "B": "Rajiv Mehrishi",
+      "C": "Shashi Kant Sharma",
+      "D": "Vinod Rai"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What was the theme of World Ozone Day 2024?",
+    "options": {
+      "A": "Ozone for Life",
+      "B": "Protecting our ozone layer",
+      "C": "Cooling the Earth",
+      "D": "Advancing climate actions"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Which Indian conglomerate has recently purchased majority share in IANS India newswire service?",
+    "options": {
+      "A": "Adani Group",
+      "B": "Tata Group",
+      "C": "Reliance Group",
+      "D": "Wipro Group"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What is the name of the nuclear power plant where India and Russia signed agreements related to construction of its future power units?",
+    "options": {
+      "A": "Kaiga Nuclear Power Plant",
+      "B": "Kudankulam Nuclear Power Plant",
+      "C": "Narora Atomic Power Station",
+      "D": "Kalpakkam Nuclear Power Plant"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What is the name of the campaign launched in India to eliminate gender-based violence?",
+    "options": {
+      "A": "Beti Bachao",
+      "B": "Shakti Abhiyan",
+      "C": "Ab Koi Bahana Nahi",
+      "D": "Nirbhaya Initiative"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What is the name of the new stent-retriever technology recently launched in India to improve stroke treatment?",
+    "options": {
+      "A": "ASRS",
+      "B": "STRIDE",
+      "C": "GRASSROOT",
+      "D": "STROKE-CARE"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which Indian agency has been included in the Steering Committee of the Asset Recovery Interagency Network-Asia Pacific (ARIN-AP)?",
+    "options": {
+      "A": "Financial Intelligence Unit (FIU)",
+      "B": "Central Bureau of Investigation (CBI)",
+      "C": "Directorate of Enforcement (ED)",
+      "D": "National Investigation Agency (NIA)"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which musician has recently been selected for the Sangeet Kalanidhi Award for the year 2024?",
+    "options": {
+      "A": "T M Krishna",
+      "B": "S. Sowmya",
+      "C": "A.R. Rehman",
+      "D": "Navneet Kumar Sehgal"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which of the following has original jurisdiction in case of poll petition?",
+    "options": {
+      "A": "Supreme court",
+      "B": "High court",
+      "C": "District court",
+      "D": "Subordinate court"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What is the name of the newly discovered black hole triple system located in the constellation of Cygnus?",
+    "options": {
+      "A": "V404 Cygni",
+      "B": "Sagittarius A",
+      "C": "Sirius B",
+      "D": "Andromeda"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "In which year Nalanda University in Bihar was included in the UNESCO World Heritage site?",
+    "options": {
+      "A": "2nd October 2020",
+      "B": "15th July 2016",
+      "C": "15th August 2016",
+      "D": "21st June 2014"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What is the full form of AMRUT Scheme launched by the Government of India?",
+    "options": {
+      "A": "Atal Mission for Rural and Urban Transformation",
+      "B": "Atal Mission for Rejuvenation and Urban Transportation",
+      "C": "Atal Mission for Rejuvenation and Urban Transformation",
+      "D": "Atal Mission for Rural and Urban Trade"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "The Union Cabinet, has approved the renaming of Ayodhya Airport as",
+    "options": {
+      "A": "Maharishi Valmiki International Airport, Ayodhyadham",
+      "B": "Maryada Purushottam Ram International Airport, Ayodhyadham",
+      "C": "Pandit Madan Mohan Malaviya International Airport, Ayodhyadham",
+      "D": "Maharishi Dayanand International Airport, Ayodhyadham"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Who succeeded Rekha Sharma as the National Commission for Women (NCW) Chairperson?",
+    "options": {
+      "A": "Archana Majumdar",
+      "B": "Vijaya Kishore Rahatkar",
+      "C": "Savitribai Phule",
+      "D": "Kanchi Math"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which cricketer has been appointed as the youth voter awareness ambassador for Jammu and Kashmir?",
+    "options": {
+      "A": "M S Dhoni",
+      "B": "Virat Kohli",
+      "C": "Suresh Raina",
+      "D": "Gautham Gambhir"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Thadou tribes, recently seen in the news, are primarily resides in which state?",
+    "options": {
+      "A": "Manipur",
+      "B": "Mizoram",
+      "C": "Tripura",
+      "D": "Nagaland"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "6th Quad Summit 2024 held in which country?",
+    "options": {
+      "A": "India",
+      "B": "Australia",
+      "C": "USA",
+      "D": "Japan"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Where was the Indo-Turkiye Friendship Association launched?",
+    "options": {
+      "A": "New Delhi",
+      "B": "Mumbai",
+      "C": "Hyderabad",
+      "D": "Bengaluru"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which organization plays a vital role in promoting Farmer Producer Organisations (FPOs) across India?",
+    "options": {
+      "A": "Small Farmers Agribusiness Consortium (SFAC)",
+      "B": "National Bank for Agriculture and Rural Development (NABARD)",
+      "C": "NITI Aayog",
+      "D": "Ministry of Finance"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Who was elected as the President of Sri Lanka in September 2024?",
+    "options": {
+      "A": "Sajith Premadasa",
+      "B": "Anura Kumara Dissanayake",
+      "C": "Ranil Wickremesinghe",
+      "D": "Gotabaya Rajapaksa"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Kashi Tamil Sangamam, that was recently inaugurated, is an initiative of which ministry?",
+    "options": {
+      "A": "Ministry of Culture",
+      "B": "Ministry of Cooperation",
+      "C": "Ministry of Education",
+      "D": "Ministry of Tourism"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What type of schools is primarily focused on in the 'AI Samarth' initiative?",
+    "options": {
+      "A": "International schools",
+      "B": "Government and low-fee private schools",
+      "C": "Elite private schools",
+      "D": "Online schools"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What does 'DNS' stand for?",
+    "options": {
+      "A": "Domain Name System",
+      "B": "Data Name Service",
+      "C": "Domain Network Service",
+      "D": "Digital Name Serve"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What does 'ISP' stand for?",
+    "options": {
+      "A": "Internet Service Provider",
+      "B": "Internal System Program",
+      "C": "Internet Speed Protocol",
+      "D": "International Signal Provider"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What does '5G' refer to in telecommunications?",
+    "options": {
+      "A": "5th Generation wireless technology",
+      "B": "5 GHz network",
+      "C": "5 Gigabit data transfer",
+      "D": "5 General protocols"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which of the following is the fastest data transmission medium?",
+    "options": {
+      "A": "Coaxial cable",
+      "B": "Twisted pair cable",
+      "C": "Optical fiber",
+      "D": "Wireless"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "Which of the following is used to cool the CPU?",
+    "options": {
+      "A": "Heat Sink",
+      "B": "Power Supply",
+      "C": "Motherboard",
+      "D": "Graphics Card"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which component connects all hardware components in a computer?",
+    "options": {
+      "A": "Motherboard",
+      "B": "Processor",
+      "C": "Power Supply",
+      "D": "RAM"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What is two-factor authentication?",
+    "options": {
+      "A": "Using two devices to log in",
+      "B": "Verifying identity through two methods",
+      "C": "Logging in twice",
+      "D": "Encrypting passwords twice"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which of the following is NOT an antivirus software?",
+    "options": {
+      "A": "Norton",
+      "B": "Avast",
+      "C": "Microsoft Edge",
+      "D": "Kaspersky"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What does 'encryption' do?",
+    "options": {
+      "A": "Speeds up internet connection",
+      "B": "Protects data by converting it into a code",
+      "C": "Deletes unnecessary files",
+      "D": "Repairs hardware"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which of the following is NOT a feature of AI?",
+    "options": {
+      "A": "Learning",
+      "B": "Problem-solving",
+      "C": "Decision-making",
+      "D": "Physical storage"
+    },
+    "correct": "D"
+  },
+  {
+    "question": "Which technology is used in cryptocurrencies like Bitcoin?",
+    "options": {
+      "A": "Cloud computing",
+      "B": "Blockchain",
+      "C": "IoT",
+      "D": "AI"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "What is the role of augmented reality (AR)?",
+    "options": {
+      "A": "To replace reality",
+      "B": "To overlay digital content on the real world",
+      "C": "To create virtual worlds",
+      "D": "To process large data"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which component stores data permanently in a computer?",
+    "options": {
+      "A": "RAM",
+      "B": "ROM",
+      "C": "Hard Drive",
+      "D": "Cache"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What does 'BIOS' stand for?",
+    "options": {
+      "A": "Basic Input/Output System",
+      "B": "Binary Input/Output System",
+      "C": "Basic Information Output System",
+      "D": "Binary Internal Operating System"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which of the following is an IDE used for Python programming?",
+    "options": {
+      "A": "PyCharm",
+      "B": "Eclipse",
+      "C": "NetBeans",
+      "D": "IntelliJ"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which document is filed when a party seeks immediate relief during a legal proceeding?",
+    "options": {
+      "A": "Interlocutory Application",
+      "B": "Final Judgment",
+      "C": "Summons",
+      "D": "Petition"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "The term “pleading” refers to:",
+    "options": {
+      "A": "An order issued by the court",
+      "B": "A party’s formal written statements of their case in court",
+      "C": "The examination of evidence by the jury",
+      "D": "A negotiation between two parties"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which of the following legal communications asks the court for a final decision on a case?",
+    "options": {
+      "A": "Affidavit",
+      "B": "Petition",
+      "C": "Motion for Summary Judgment",
+      "D": "Interlocutory Application"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "A “notice of appeal” is filed to:",
+    "options": {
+      "A": "Inform the court and opposing party that the decision is being challenged in a higher court",
+      "B": "Request the trial court to reopen the case",
+      "C": "Demand monetary compensation",
+      "D": "File criminal charges"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "What is the purpose of a bail order?",
+    "options": {
+      "A": "To bring a case to court",
+      "B": "To provide temporary release of an accused person awaiting trial",
+      "C": "To file criminal charges",
+      "D": "To issue a final judgment"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "Which of the following documents is prepared by the police after an arrest?",
+    "options": {
+      "A": "FIR",
+      "B": "Summons",
+      "C": "Charge Sheet",
+      "D": "Affidavit"
+    },
+    "correct": "C"
+  },
+  {
+    "question": "What is a “writ of prohibition”?",
+    "options": {
+      "A": "A court order stopping a lower court from acting beyond its jurisdiction",
+      "B": "A writ ordering someone’s release from prison",
+      "C": "A request for bail",
+      "D": "A motion to appeal"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "Which document is submitted by a party to request a court's intervention in a case?",
+    "options": {
+      "A": "Affidavit",
+      "B": "Petition",
+      "C": "Notice of Motion",
+      "D": "Charge Sheet"
+    },
+    "correct": "B"
+  },
+  {
+    "question": "A deposition is:",
+    "options": {
+      "A": "A sworn statement given orally outside of court, recorded for later use",
+      "B": "A final order by the judge",
+      "C": "A formal written request to the court",
+      "D": "A public announcement of legal action"
+    },
+    "correct": "A"
+  },
+  {
+    "question": "A “subpoena” is used to:",
+    "options": {
+      "A": "Arrest a suspect",
+      "B": "Summon a witness to testify in court",
+      "C": "File a complaint",
+      "D": "Issue a final judgment"
     },
     "correct": "B"
   }
 ]
+
+
+
+
+
+  
